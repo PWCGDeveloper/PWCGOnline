@@ -12,15 +12,22 @@
     text-align: left;
   }
   
+  button {
+    border-radius: 25px;
+    background-color: rgba(141, 35, 35, 0.8);
+    color: rgba(0, 0, 0, 0.8);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 150%;    
+  }
   label {
       color: rgb(9, 0, 34);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 100%;
-  }
+      font-size: 100%;    
+    }
   input {
       color: rgb(9, 0, 34);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 100%;
+      font-size: 75%;
   }
   option {
       color: rgb(9, 0, 34);
@@ -30,7 +37,7 @@
   select {
       color: rgb(9, 0, 34);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 100%;
+      font-size: 75%;
   }
   h1 {
       color: #369;
@@ -38,10 +45,10 @@
       font-size: 250%;
   }
   h2, h3 {
-      color: #444;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 150%;
-      font-weight: lighter;
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 200%;
+    font-weight: lighter;
     }
   body {
       margin: 2em;

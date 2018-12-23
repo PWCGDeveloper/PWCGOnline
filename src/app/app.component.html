@@ -2,8 +2,6 @@
   <h1>{{title}}</h1>
 </div>
 
-<app-navigation></app-navigation>
-
 <!--The content below is only a placeholder and can be replaced
 <nav>
   <div *ngIf="isLoggedIn(); else loggedOut">
@@ -17,5 +15,12 @@
   </ng-template>
 </nav>
 .-->
+
+<div *ngIf="isLoggedIn(); else loggedOut">
+  <app-navigation></app-navigation>
+</div>
+<ng-template #loggedOut>
+  <app-new-user-navigation></app-new-user-navigation>
+</ng-template>
 
 <router-outlet></router-outlet>

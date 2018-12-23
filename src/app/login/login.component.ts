@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.clickMessage = "Enyter username and password click submit";
+    this.clickMessage = "Enter username and password click submit";
   }
 
   onSubmitLoginRequest() {

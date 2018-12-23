@@ -1,4 +1,4 @@
-<h2>PWCG Online Login </h2> 
+<h2>Login </h2> 
 
 <div class="grid-container">
   <div class="grid-item">
@@ -14,15 +14,14 @@
   <div class="grid-item">
       <input size="20" [(ngModel)]="loginData.password" placeholder="Password">
   </div>
-
 </div>
 
 <form>
       <br>      
-      <button (click)="onSubmitLoginRequest()">Submit Login Request</button>
+      <button name="submitButton" (click)="onSubmitLoginRequest()"> Submit Login Request</button>
 </form>
 
 <br>
 <div>
-  {{clickMessage}}
+        <label name="message">{{clickMessage}}</label>
 </div>

@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import {CustomMaterialModule} from "./material.module";
+import { NewUserNavigationComponent } from './new-user-navigation/new-user-navigation.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {CustomMaterialModule} from "./material.module";
     NewPilotComponent,
     LoginComponent,
     NavigationComponent,
+    NewUserNavigationComponent,
   ],
   imports: [
     BrowserModule,
