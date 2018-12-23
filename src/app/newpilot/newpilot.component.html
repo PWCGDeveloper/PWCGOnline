@@ -1,0 +1,48 @@
+<h2>PWCG Online Pilot Creation Request </h2> 
+
+<div class="grid-container">
+
+  <div class="grid-item">
+      <label>Pilot Name: </label>
+  </div>
+  <div class="grid-item">
+      <input size="20" [(ngModel)]="newPilotData.pilotName" placeholder="Pilot Name">
+  </div>
+
+  <div class="grid-item">
+      <label>Campaign: </label>
+  </div>
+  <div class="grid-item">
+      <select [(ngModel)]="newPilotData.campaignName">
+            <option [ngValue]="undefined" selected>Select Campaign</option>
+            <option *ngFor="let campaign of campaigns" [ngValue]="campaign.name">{{campaign.name}}</option>
+        </select>
+  </div>
+
+  <div class="grid-item">
+      <label>Squadron: </label>
+  </div>
+  <div class="grid-item">
+      <select [(ngModel)]="newPilotData.squadronName">
+            <option [ngValue]="" selected>Select Squadron</option>
+      <option *ngFor="let squadron of squadrons" [ngValue]="squadron.name">{{squadron.name}}</option>
+      </select>
+  </div>
+
+  <div class="grid-item">
+      <label>Note to Host: </label>
+  </div>
+  <div class="grid-item">
+      <input  size="50" [(ngModel)]="newPilotData.note" placeholder="Note to Host">
+  </div>
+</div>
+
+<form>
+      <br>      
+      <button (click)="onSubmitNewPilotRequest()">Submit New Player Request</button>
+</form>
+
+<br>
+<div>
+  {{clickMessage}}
+</div>

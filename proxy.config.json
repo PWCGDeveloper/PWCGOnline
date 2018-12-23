@@ -1,0 +1,8 @@
+{
+  "/pwcgServer/*": {
+    "target": "http://localhost:1945",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

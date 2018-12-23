@@ -1,0 +1,34 @@
+<h2>PWCG Online New User Request </h2> 
+
+<div class="grid-container">
+  <div class="grid-item">
+      <label>Username: </label>
+  </div>
+  <div class="grid-item">
+      <input size="20" [(ngModel)]="newUserData.username" placeholder="Username">
+  </div>
+
+  <div class="grid-item">
+      <label>Password: </label>
+  </div>
+  <div class="grid-item">
+      <input size="20" [(ngModel)]="newUserData.password" placeholder="Password">
+  </div>
+
+  <div class="grid-item">
+      <label>Note to Host: </label>
+  </div>
+  <div class="grid-item">
+      <input  size="50" [(ngModel)]="newUserData.note" placeholder="Note to Host">
+  </div>
+</div>
+
+<form>
+      <br>      
+      <button (click)="onSubmitNewPlayerRequest()">Submit New Player Request</button>
+</form>
+
+<br>
+<div>
+  {{clickMessage}}
+</div>
