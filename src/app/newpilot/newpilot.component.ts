@@ -70,7 +70,7 @@ export class NewPilotComponent implements OnInit {
         this.clickMessage = "New player request submitted for " + this.newPilotData.username;
       }
       else {
-        this.clickMessage = "Username and password are required fields";
+        this.clickMessage = "Pilot name, campaign, and squadron are required fields";
       }
     }
     catch (e) {
