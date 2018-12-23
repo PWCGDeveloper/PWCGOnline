@@ -8,6 +8,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NewPilotComponent } from './newpilot/newpilot.component';
 import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationComponent } from './navigation/navigation.component';
+import {CustomMaterialModule} from "./material.module";
 
 @NgModule({
   declarations: [
@@ -15,12 +18,15 @@ import { LoginComponent } from './login/login.component';
     NewUserComponent,
     NewPilotComponent,
     LoginComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    CustomMaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
