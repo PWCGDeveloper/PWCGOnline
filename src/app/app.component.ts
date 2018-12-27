@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'PWCG Online';
 
   public isLoggedIn(): boolean {
+    console.log(JSON.stringify(Context.context));
     return Context.context.isLoggedIn;
   }
 }

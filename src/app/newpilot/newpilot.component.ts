@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewPilotData } from '../model/new-pilot-data';
+import { PilotData } from '../model/pilotdata';
 import { NewPilotService } from '../newpilot.service';
 import { CampaignListService } from '../campaignList.service';
 import { SquadronListService } from '../squadronList.service';
@@ -19,13 +19,14 @@ export class NewPilotComponent implements OnInit {
   clickMessage: String;
   loading: boolean;
 
-  newPilotData: NewPilotData =
+  newPilotData: PilotData =
     {
       username: "",
       campaignName: "",
       squadronName: "",
       pilotName: "",
       serialNumber: 0,
+      approved: false,
       note: 'I want a new pilot',
     }
 

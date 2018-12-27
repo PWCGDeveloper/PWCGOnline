@@ -2,20 +2,6 @@
   <h1>{{title}}</h1>
 </div>
 
-<!--The content below is only a placeholder and can be replaced
-<nav>
-  <div *ngIf="isLoggedIn(); else loggedOut">
-    <a routerLink="/newpilot">New Pilot Request</a>
-  </div>
-  <ng-template #loggedOut>
-    <a routerLink="/newuser">New User Registration</a>
-    <br>
-    <a routerLink="/login">Login Request</a>
-    <br>
-  </ng-template>
-</nav>
-.-->
-
 <div *ngIf="isLoggedIn(); else loggedOut">
   <app-navigation></app-navigation>
 </div>
