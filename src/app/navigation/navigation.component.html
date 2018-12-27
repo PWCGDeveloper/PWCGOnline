@@ -12,8 +12,10 @@
           <a mat-list-item routerLink="/newpilot">New Pilot Request</a>
       </mat-nav-list>
       <mat-nav-list>
-        <span>Campaigns</span>
-        <p mat-list-item class="md-secondary">Campaign One</p>
+        <h3>Campaigns</h3>
+        <mat-list-item *ngFor="let pilot of pilots;">
+          <a mat-list-item class="md-secondary">{{pilot.pilotName}}</a>
+        </mat-list-item>
       </mat-nav-list>    
     </mat-sidenav>
     <mat-sidenav-content>

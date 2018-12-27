@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Squadron } from './model/squadron';
-
+import { PilotData } from './model/pilotdata';
 
 @Injectable({
   providedIn: 'root'
 })
+export class PilotListService {
 
-export class SquadronListService {
 
-  squadronList: Squadron[];
+  pilotList: PilotData[];
 
   constructor(private httpClient: HttpClient) {
-    this.squadronList = [];
+    this.pilotList = [];
   }
 
-  public getCampaignSquadronList(campaignName: string) {
+  public getPilotsForUser(username: string) {
     const httpOptions = {
       headers: new HttpHeaders(
         {
@@ -26,9 +24,10 @@ export class SquadronListService {
     };
 
     const promise = new Promise((resolve, reject) => {
-      const url = `/pwcgServer/squadronList?${campaignName}`;
-      this.httpClient.get<Squadron[]>(url).toPromise().then(res => {
-        this.squadronList = res;
+      const url = `/pwcgServer/pilotsForPlayer?playerHandle=${username}`;
+      this.httpClient.get<PilotData[]>(url).toPromise().then(res => {
+        this.pilotList = res;
+        console.log(JSON.stringify(res));
         resolve();
       },
       msg => {
@@ -37,5 +36,4 @@ export class SquadronListService {
     });
 
     return promise;
-  }
-}
+  }}

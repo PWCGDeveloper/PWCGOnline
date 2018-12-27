@@ -21,26 +21,29 @@ export class NewPilotComponent implements OnInit {
 
   newPilotData: PilotData =
     {
-      username: "",
-      campaignName: "",
-      squadronName: "",
-      pilotName: "",
+      username: ``,
+      campaignName: ``,
+      squadronName: ``,
+      pilotName: ``,
       serialNumber: 0,
       approved: false,
       note: 'I want a new pilot',
-    }
+    };
 
-  constructor(private newPilotService: NewPilotService, private campaignListService: CampaignListService, private squadronListService: SquadronListService) {
-    console.log("NewPilotComponent Constructor");
+  constructor(
+    private newPilotService: NewPilotService,
+    private campaignListService: CampaignListService,
+    private squadronListService: SquadronListService) {
+    console.log(`NewPilotComponent Constructor`);
     this.campaigns = [];
     this.squadrons = [];
-    this.clickMessage = "Enter user registration information and click submit";
+    this.clickMessage = `Enter user registration information and click submit`;
     this.loading = false;
   }
 
   ngOnInit() {
     this.loading = true;
-    this.clickMessage = "Loading campaign data ...";
+    this.clickMessage = `Loading campaign data ...`;
     this.getCampaigns();
   }
 
@@ -54,11 +57,11 @@ export class NewPilotComponent implements OnInit {
   }
 
   private getSquadronsForCampaign(campaignName: string) {
-    this.clickMessage = "Loading squadron data for campaign ";
+    this.clickMessage = `Loading squadron data for campaign `;
 
     this.squadronListService.getCampaignSquadronList(campaignName).then(() => {
       this.squadrons = this.squadronListService.squadronList;
-      this.clickMessage = "Data load complete.  Proceed with selection";
+      this.clickMessage = `Data load complete.  Proceed with selection`;
     });
   }
 
@@ -68,26 +71,24 @@ export class NewPilotComponent implements OnInit {
         console.log(`Submit new pilot: ` + JSON.stringify(this.newPilotData));
         this.newPilotData.username = Context.context.user;
         this.newPilotService.postNewPilotRequest(this.newPilotData);
-        this.clickMessage = "New player request submitted for " + this.newPilotData.username;
+        this.clickMessage = `New player request submitted for ` + this.newPilotData.username;
+      } else {
+        this.clickMessage = `Pilot name, campaign, and squadron are required fields`;
       }
-      else {
-        this.clickMessage = "Pilot name, campaign, and squadron are required fields";
-      }
-    }
-    catch (e) {
-      console.log("Error submitting new user request", e);
+    } catch (e) {
+      console.log(`Error submitting new user request`, e);
     }
   }
 
   validate() {
 
-    if (this.newPilotData.pilotName == '') {
+    if (this.newPilotData.pilotName === '') {
       return false;
     }
-    if (this.newPilotData.squadronName == '') {
+    if (this.newPilotData.squadronName === '') {
       return false;
     }
-    if (this.newPilotData.campaignName == '') {
+    if (this.newPilotData.campaignName === '') {
       return false;
     }
 
