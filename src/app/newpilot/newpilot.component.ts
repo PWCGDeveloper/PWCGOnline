@@ -23,7 +23,7 @@ export class NewPilotComponent implements OnInit {
     {
       username: ``,
       campaignName: ``,
-      squadronName: ``,
+      squadronId: 0,
       pilotName: ``,
       serialNumber: 0,
       approved: false,
@@ -85,7 +85,7 @@ export class NewPilotComponent implements OnInit {
     if (this.newPilotData.pilotName === '') {
       return false;
     }
-    if (this.newPilotData.squadronName === '') {
+    if (this.newPilotData.squadronId === 0) {
       return false;
     }
     if (this.newPilotData.campaignName === '') {

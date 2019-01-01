@@ -3,7 +3,7 @@ export class PilotData {
     campaignName: String;
     pilotName: String;
     serialNumber: number;
-    squadronName: String;
+    squadronId: number;
     approved: boolean;
     note: String;
 

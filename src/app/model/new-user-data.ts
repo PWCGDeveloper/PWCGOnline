@@ -4,7 +4,6 @@ export class UserData {
     note: string;
     approved: boolean;
 
-
     constructor() {
         this.approved = false;
     }
