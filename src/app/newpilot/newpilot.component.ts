@@ -89,6 +89,7 @@ export class NewPilotComponent implements OnInit {
         console.log(`Submit new pilot: ` + JSON.stringify(this.newPilotData));
         this.newPilotData.username = Context.context.user;
         this.newPilotData.squadronId = this.squadron.squadronId;
+        this.newPilotData.pilotRank = this.rank.rankName;
         this.newPilotService.postNewPilotRequest(this.newPilotData);
         this.clickMessage = `New player request submitted for ` + this.newPilotData.username;
       } else {
