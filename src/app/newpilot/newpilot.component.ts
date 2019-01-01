@@ -3,8 +3,10 @@ import { PilotData } from '../model/pilotdata';
 import { NewPilotService } from '../newpilot.service';
 import { CampaignListService } from '../campaignList.service';
 import { SquadronListService } from '../squadronList.service';
+import { RankService } from '../rank.service';
 import { Campaign } from '../model/campaign';
 import { Squadron } from '../model/squadron';
+import { Rank } from '../model/rank';
 import { Context } from '../model/context';
 
 @Component({
@@ -16,8 +18,11 @@ export class NewPilotComponent implements OnInit {
 
   campaigns: Campaign[];
   squadrons: Squadron[];
+  ranks: Rank[];
   clickMessage: String;
   loading: boolean;
+  squadron: Squadron;
+  rank: Rank;
 
   newPilotData: PilotData =
     {
@@ -33,7 +38,8 @@ export class NewPilotComponent implements OnInit {
   constructor(
     private newPilotService: NewPilotService,
     private campaignListService: CampaignListService,
-    private squadronListService: SquadronListService) {
+    private squadronListService: SquadronListService,
+    private ranksService: RankService)  {
     console.log(`NewPilotComponent Constructor`);
     this.campaigns = [];
     this.squadrons = [];
@@ -61,6 +67,18 @@ export class NewPilotComponent implements OnInit {
 
     this.squadronListService.getCampaignSquadronList(campaignName).then(() => {
       this.squadrons = this.squadronListService.squadronList;
+      this.clickMessage = `Loading ranks for squadron`;
+      if (this.squadrons.length > 0) {
+        this.getRanksForSquadron(this.squadrons[0].serviceId);
+      }
+    });
+  }
+
+  private getRanksForSquadron(serviceId: number) {
+    this.clickMessage = `Loading ranks for squadron `;
+
+    this.ranksService.getRanksForService(serviceId).then(() => {
+      this.ranks = this.ranksService.ranks;
       this.clickMessage = `Data load complete.  Proceed with selection`;
     });
   }
@@ -70,6 +88,7 @@ export class NewPilotComponent implements OnInit {
       if (this.validate()) {
         console.log(`Submit new pilot: ` + JSON.stringify(this.newPilotData));
         this.newPilotData.username = Context.context.user;
+        this.newPilotData.squadronId = this.squadron.squadronId;
         this.newPilotService.postNewPilotRequest(this.newPilotData);
         this.clickMessage = `New player request submitted for ` + this.newPilotData.username;
       } else {
@@ -85,7 +104,7 @@ export class NewPilotComponent implements OnInit {
     if (this.newPilotData.pilotName === '') {
       return false;
     }
-    if (this.newPilotData.squadronId === 0) {
+    if (this.squadron.squadronId === 0) {
       return false;
     }
     if (this.newPilotData.campaignName === '') {

@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Squadron } from './model/squadron';
-
+import { Rank } from './model/rank';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class SquadronListService {
+export class RankService {
 
-  squadronList: Squadron[];
+  ranks: Rank[];
 
   constructor(private httpClient: HttpClient) {
-    this.squadronList = [];
+    this.ranks = [];
   }
 
-  public getCampaignSquadronList(campaignName: string) {
+  public getRanksForService(serviceId: number) {
     const httpOptions = {
       headers: new HttpHeaders(
         {
@@ -26,9 +25,9 @@ export class SquadronListService {
     };
 
     const promise = new Promise((resolve, reject) => {
-      const url = `/pwcgServer/squadronList?campaignName=${campaignName}`;
-      this.httpClient.get<Squadron[]>(url).toPromise().then(res => {
-        this.squadronList = res;
+      const url = `/pwcgServer/ranksForService?serviceId=${serviceId}`;
+      this.httpClient.get<Rank[]>(url).toPromise().then(res => {
+        this.ranks = res;
         resolve();
       },
       msg => {
@@ -37,5 +36,4 @@ export class SquadronListService {
     });
 
     return promise;
-  }
-}
+  }}

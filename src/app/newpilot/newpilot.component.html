@@ -23,11 +23,31 @@
       <label>Squadron: </label>
   </div>
   <div class="grid-item">
-      <select [(ngModel)]="newPilotData.squadronId">
+      <select [(ngModel)]="newPilotData.squadron">
             <option [ngValue]="" selected>Select Squadron</option>
-      <option *ngFor="let squadron of squadrons" [ngValue]="squadron.squadronId">{{squadron.name}}</option>
+      <option *ngFor="let squadron of squadrons" [ngValue]="squadron">{{squadron.name}}</option>
       </select>
   </div>
+
+
+
+
+
+  <div class="grid-item">
+    <label>Rank: </label>
+  </div>
+  <div class="grid-item">
+    <select [(ngModel)]="newPilotData.rank">
+          <option [ngValue]="" selected>Select Rank</option>
+    <option *ngFor="let rank of ranks" [ngValue]="rank">{{rank.rankName}}</option>
+    </select>
+  </div>
+
+
+
+
+
+
 
   <div class="grid-item">
       <label>Note to Host: </label>
