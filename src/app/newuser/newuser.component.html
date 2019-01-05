@@ -1,34 +1,29 @@
-<h2>New User Request </h2> 
-
-<div class="grid-container">
-  <div class="grid-item">
-      <label>Username: </label>
-  </div>
-  <div class="grid-item">
-      <input size="20" [(ngModel)]="newUserData.username" placeholder="Username">
-  </div>
-
-  <div class="grid-item">
-      <label>Password: </label>
-  </div>
-  <div class="grid-item">
-      <input size="20" [(ngModel)]="newUserData.password" placeholder="Password">
-  </div>
-
-  <div class="grid-item">
-      <label>Note to Host: </label>
-  </div>
-  <div class="grid-item">
-      <input  size="50" [(ngModel)]="newUserData.note" placeholder="Note to Host">
-  </div>
+<div>
+    <br>
+    <mat-grid-list cols="1" rowHeight="100px">
+        <mat-grid-tile>
+            <label class='pwcginputlabel'>Username:  </label>
+            <input class='pwcginput' size="20" [(ngModel)]="newUserData.username" placeholder="Username">
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <label class='pwcginputlabel'>Password:  </label>
+            <input class='pwcginput' size="20" [(ngModel)]="newUserData.password" placeholder="Password">
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <label class='pwcginputlabel'>Note to Host: </label>
+            <input class='pwcginput' size="100" [(ngModel)]="newUserData.note" placeholder="Note to Host">
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>
 
-<form>
-      <br>      
-      <button (click)="onSubmitNewPlayerRequest()">Submit New Player Request</button>
-</form>
+<div>
+    <form>
+        <br>
+        <button class='pwcgbutton' name="submitButton" (click)="onSubmitNewPlayerRequest()"> Submit New Player Request</button>
+    </form>
+</div>
 
 <br>
 <div>
-        <label name="message">{{clickMessage}}</label>
+    <label class='pwcgmessage' name="message">{{clickMessage}}</label>
 </div>

@@ -1,12 +1,6 @@
-<div style="text-align:center">
-  <h1>{{title}}</h1>
-</div>
-
 <div *ngIf="isLoggedIn(); else loggedOut">
   <app-navigation></app-navigation>
 </div>
 <ng-template #loggedOut>
   <app-new-user-navigation></app-new-user-navigation>
 </ng-template>
-
-<router-outlet></router-outlet>

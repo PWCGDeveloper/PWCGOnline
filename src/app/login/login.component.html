@@ -1,27 +1,25 @@
-<h2>Login </h2> 
-
-<div class="grid-container">
-  <div class="grid-item">
-      <label>Username: </label>
-  </div>
-  <div class="grid-item">
-      <input size="20" [(ngModel)]="loginData.username" placeholder="Username">
-  </div>
-
-  <div class="grid-item">
-      <label>Password: </label>
-  </div>
-  <div class="grid-item">
-      <input size="20" [(ngModel)]="loginData.password" placeholder="Password">
-  </div>
+<div>
+    <br>
+    <mat-grid-list cols="1" rowHeight="100px">
+        <mat-grid-tile>
+            <label class='pwcginputlabel'>Username: </label>
+            <input class='pwcginput' matInput size="20" [(ngModel)]="loginData.username" placeholder="Username">
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <label class='pwcginputlabel'>Password: </label>
+            <input class='pwcginput' matInput size="20" [(ngModel)]="loginData.password" placeholder="Password">
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>
 
-<form>
-      <br>      
-      <button name="submitButton" (click)="onSubmitLoginRequest()"> Submit Login Request</button>
-</form>
+<div>
+    <form>
+        <br>
+        <button class='pwcgbutton' name="submitButton" (click)="onSubmitLoginRequest()"> Submit Login Request</button>
+    </form>
+</div>
 
 <br>
 <div>
-        <label name="message">{{clickMessage}}</label>
+  <label class='pwcgmessage' name="message">{{clickMessage}}</label>
 </div>

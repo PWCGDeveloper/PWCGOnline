@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { PilotData } from '../model/pilotdata';
 import { NewPilotService } from '../newpilot.service';
 import { CampaignListService } from '../campaignList.service';
@@ -12,7 +12,7 @@ import { Context } from '../model/context';
 @Component({
   selector: 'app-newpilot',
   templateUrl: './newpilot.component.html',
-  styleUrls: ['./newpilot.component.css']
+  styleUrls: ['./newpilot.component.css'],
 })
 export class NewPilotComponent implements OnInit {
 
@@ -21,19 +21,12 @@ export class NewPilotComponent implements OnInit {
   ranks: Rank[];
   clickMessage: String;
   loading: boolean;
+
+  campaign: Campaign;
   squadron: Squadron;
   rank: Rank;
 
-  newPilotData: PilotData =
-    {
-      username: ``,
-      campaignName: ``,
-      squadronId: 0,
-      pilotName: ``,
-      serialNumber: 0,
-      approved: false,
-      note: 'I want a new pilot',
-    };
+  newPilotData: PilotData = new PilotData();
 
   constructor(
     private newPilotService: NewPilotService,
@@ -113,6 +106,10 @@ export class NewPilotComponent implements OnInit {
     }
 
     return true;
+  }
+
+  onSquadronChange(event) {
+    console.log(event);
   }
 
 }

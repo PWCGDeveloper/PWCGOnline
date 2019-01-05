@@ -1,4 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+background-color: rgba(0, 0, 0, 0.021);
+
+  mat-grid-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  background-color: rgba(0, 0, 0, 0.021);
+}
+
+.mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
+}
+
+input.pwcginput { 
+  color: rgba(0, 0, 0, 0.959); 
+  background-color: rgba(141, 35, 35, 0.075);
+  font-size: 150%;    
+}
+
+label.pwcginputlabel { 
+  color: rgba(0, 0, 0, 0.959); 
+  background-color: rgba(0, 0, 0, 0.021);
+  font-size: 150%;    
+}
+
+label.pwcgmessage { 
+  color: rgba(119, 9, 9, 0.959); 
+  background-color: rgba(0, 0, 0, 0.021);
+  font-size: 150%;    
+}
+
+button {
+  border-radius: 25px;
+  background-color: rgba(141, 35, 35, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 150%;    
+}
+
+input {
+  color: rgb(9, 0, 34);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100%;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

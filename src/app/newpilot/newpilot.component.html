@@ -10,28 +10,30 @@
   </div>
 
   <div class="grid-item">
-      <label>Campaign: </label>
+    <label>Campaign: </label>
   </div>
   <div class="grid-item">
-      <select [(ngModel)]="newPilotData.campaignName">
-            <option [ngValue]="undefined" selected>Select Campaign</option>
-            <option *ngFor="let campaign of campaigns" [ngValue]="campaign.name">{{campaign.name}}</option>
-        </select>
+      <mat-form-field>
+        <mat-select placeholder="Choose Campaign" [(ngModel)]="newPilotData.campaign" name="campaignSelect">
+          <mat-option *ngFor="let campaign of campaigns" [value]="campaign.name">
+            {{campaign.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
   </div>
 
   <div class="grid-item">
-      <label>Squadron: </label>
+    <label>Squadron: </label>
   </div>
   <div class="grid-item">
-      <select [(ngModel)]="newPilotData.squadron">
-            <option [ngValue]="" selected>Select Squadron</option>
-      <option *ngFor="let squadron of squadrons" [ngValue]="squadron">{{squadron.name}}</option>
-      </select>
+      <mat-form-field>
+        <mat-select placeholder="Choose Squadron" [(ngModel)]="newPilotData.squadron" name="squadronSelect">
+          <mat-option *ngFor="let squadron of squadrons" [value]="squadron.name">
+            {{squadron.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
   </div>
-
-
-
-
 
   <div class="grid-item">
     <label>Rank: </label>
@@ -42,12 +44,6 @@
     <option *ngFor="let rank of ranks" [ngValue]="rank">{{rank.rankName}}</option>
     </select>
   </div>
-
-
-
-
-
-
 
   <div class="grid-item">
       <label>Note to Host: </label>

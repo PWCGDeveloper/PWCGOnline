@@ -9,5 +9,13 @@ export class PilotData {
     note: String;
 
     constructor() {
+        this.username = '';
+        this.campaignName = '';
+        this.pilotName = '';
+        this.pilotRank = '';
+        this.squadronId = 0;
+        this.serialNumber = 0;
+        this.approved = false;
+        this.note = 'I want a new pilot';
     }
 }
