@@ -1,18 +1,20 @@
-<h2>Pilot Creation Request </h2> 
+<div>
+  <br>
+  <h3>Pilot Creation Request </h3>
+  <mat-divider></mat-divider>
+  <mat-grid-list cols="1" rowHeight="100px" gutterSize="30px">
+    <mat-grid-tile>
+      <mat-form-field>
+        <input class='pwcginput' matInput size="30" [(ngModel)]="newPilotData.pilotName" placeholder="Pilot Name">
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field>
+          <input class='pwcginput' matInput size="100" [(ngModel)]="newPilotData.note" placeholder="Note to Host">
+        </mat-form-field>
+      </mat-grid-tile>
 
-<div class="grid-container">
-
-  <div class="grid-item">
-      <label>Pilot Name: </label>
-  </div>
-  <div class="grid-item">
-      <input size="20" [(ngModel)]="newPilotData.pilotName" placeholder="Pilot Name">
-  </div>
-
-  <div class="grid-item">
-    <label>Campaign: </label>
-  </div>
-  <div class="grid-item">
+    <mat-grid-tile>
       <mat-form-field>
         <mat-select placeholder="Choose Campaign" [(ngModel)]="newPilotData.campaign" name="campaignSelect">
           <mat-option *ngFor="let campaign of campaigns" [value]="campaign.name">
@@ -20,12 +22,9 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-  </div>
+    </mat-grid-tile>
 
-  <div class="grid-item">
-    <label>Squadron: </label>
-  </div>
-  <div class="grid-item">
+    <mat-grid-tile>
       <mat-form-field>
         <mat-select placeholder="Choose Squadron" [(ngModel)]="newPilotData.squadron" name="squadronSelect">
           <mat-option *ngFor="let squadron of squadrons" [value]="squadron.name">
@@ -33,32 +32,30 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-  </div>
+    </mat-grid-tile>
 
-  <div class="grid-item">
-    <label>Rank: </label>
-  </div>
-  <div class="grid-item">
-    <select [(ngModel)]="newPilotData.rank">
-          <option [ngValue]="" selected>Select Rank</option>
-    <option *ngFor="let rank of ranks" [ngValue]="rank">{{rank.rankName}}</option>
-    </select>
-  </div>
-
-  <div class="grid-item">
-      <label>Note to Host: </label>
-  </div>
-  <div class="grid-item">
-      <input  size="50" [(ngModel)]="newPilotData.note" placeholder="Note to Host">
-  </div>
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-select placeholder="Choose Rank" [(ngModel)]="newPilotData.rank" name="rankSelect">
+          <mat-option *ngFor="let rank of ranks" [value]="rank.rankName">
+            {{rank.rankName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
 
-<form>
-      <br>      
-      <button (click)="onSubmitNewPilotRequest()">Submit New Player Request</button>
-</form>
+<div>
+  <form>
+    <br>
+    <button class='pwcgbutton' name="submitButton" (click)="onSubmitNewPilotRequest()"> Submit New Pilot Request</button>
+  </form>
+</div>
 
 <br>
+<mat-divider></mat-divider>
+<br>
 <div>
-        <label name="message">{{clickMessage}}</label>
+  <label class='pwcgmessage' name="message">{{clickMessage}}</label>
 </div>

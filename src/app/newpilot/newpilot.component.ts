@@ -8,11 +8,13 @@ import { Campaign } from '../model/campaign';
 import { Squadron } from '../model/squadron';
 import { Rank } from '../model/rank';
 import { Context } from '../model/context';
+import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-newpilot',
   templateUrl: './newpilot.component.html',
   styleUrls: ['./newpilot.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NewPilotComponent implements OnInit {
 

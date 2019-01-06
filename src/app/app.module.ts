@@ -12,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import {CustomMaterialModule} from './material.module';
 import { NewUserNavigationComponent } from './new-user-navigation/new-user-navigation.component';
-import { SelectModule } from 'ng2-select';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { SelectModule } from 'ng2-select';
     HttpClientModule,
     BrowserAnimationsModule,
     CustomMaterialModule,
-    SelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,12 +10,19 @@ background-color: rgba(0, 0, 0, 0.021);
 .mat-grid-tile .mat-figure {
   justify-content: flex-start !important ;
   align-items: flex-start !important;
+  padding-top: 10px !important;
 }
 
 input.pwcginput { 
   color: rgba(0, 0, 0, 0.959); 
   background-color: rgba(141, 35, 35, 0.075);
-  font-size: 150%;    
+  font-size: 150%;
+  width:400px !important;
+  flex:"30";
+}
+
+mat-form-field {
+  width: 100%;
 }
 
 label.pwcginputlabel { 
