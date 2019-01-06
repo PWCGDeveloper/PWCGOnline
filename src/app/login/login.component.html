@@ -1,13 +1,16 @@
 <div>
     <br>
+    <h3>Login </h3>
     <mat-grid-list cols="1" rowHeight="100px">
         <mat-grid-tile>
-            <label class='pwcginputlabel'>Username: </label>
-            <input class='pwcginput' matInput size="20" [(ngModel)]="loginData.username" placeholder="Username">
+            <mat-form-field>
+                <input class='pwcginput' matInput size="20" [(ngModel)]="loginData.username" placeholder="Username">
+            </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
-            <label class='pwcginputlabel'>Password: </label>
-            <input class='pwcginput' matInput size="20" [(ngModel)]="loginData.password" placeholder="Password">
+            <mat-form-field>
+                <input class='pwcginput' matInput size="20" [(ngModel)]="loginData.password" placeholder="Password">
+            </mat-form-field>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
@@ -18,6 +21,9 @@
         <button class='pwcgbutton' name="submitButton" (click)="onSubmitLoginRequest()"> Submit Login Request</button>
     </form>
 </div>
+
+<br>
+<mat-divider></mat-divider>
 
 <br>
 <div>

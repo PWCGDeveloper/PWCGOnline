@@ -17,7 +17,7 @@ export class NewUserComponent implements OnInit {
     {
       username: '',
       password: '',
-      note: 'Can I play?',
+      note: '',
       approved: false,
     }
 
