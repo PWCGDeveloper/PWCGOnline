@@ -29,5 +29,7 @@
 
 <br>
 <div>
-    <label class='pwcgmessage' name="message">{{clickMessage}}</label>
+    <mat-error *ngIf="clickMessage.length > 0">
+        {{clickMessage}}
+    </mat-error>
 </div>

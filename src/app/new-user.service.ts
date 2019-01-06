@@ -11,7 +11,7 @@ export class NewUserService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public postNewUserRequest(newUserData: UserData): Observable<UserData> {
+  public postNewUserRequest(newUserData: UserData): Observable<Object> {
 
     try {
       const httpOptions = {
@@ -23,13 +23,7 @@ export class NewUserService {
       }
 
       const url = '/pwcgServer/newUserRequest'
-      this.httpClient.post(url, JSON.stringify(newUserData), httpOptions).subscribe(
-        res => {
-          console.log(`Response is ${JSON.stringify(res)}`);
-        },
-        error => {
-          console.log(`Response is ${JSON.stringify(error)}`);
-        });
+      return this.httpClient.post(url, JSON.stringify(newUserData), httpOptions);
     }
     catch (e) {
       console.log(e);
