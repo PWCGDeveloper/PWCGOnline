@@ -16,8 +16,8 @@
 
     <mat-grid-tile>
       <mat-form-field>
-        <mat-select placeholder="Choose Campaign" [(ngModel)]="newPilotData.campaign" name="campaignSelect">
-          <mat-option *ngFor="let campaign of campaigns" [value]="campaign.name">
+        <mat-select placeholder="Choose Campaign" (selectionChange)="onCampaignChange($event)" [(value)]="selectedCampaign" name="campaignSelect">
+          <mat-option *ngFor="let campaign of campaigns" [(value)]="campaign">
             {{campaign.name}}
           </mat-option>
         </mat-select>
@@ -26,8 +26,8 @@
 
     <mat-grid-tile>
       <mat-form-field>
-        <mat-select placeholder="Choose Squadron" [(ngModel)]="newPilotData.squadron" name="squadronSelect">
-          <mat-option *ngFor="let squadron of squadrons" [value]="squadron.name">
+        <mat-select placeholder="Choose Squadron" (selectionChange)="onSquadronChange($event)" [(value)]="selectedSquadron" name="squadronSelect">
+          <mat-option *ngFor="let squadron of squadrons" [(value)]="squadron">
             {{squadron.name}}
           </mat-option>
         </mat-select>
@@ -36,8 +36,8 @@
 
     <mat-grid-tile>
       <mat-form-field>
-        <mat-select placeholder="Choose Rank" [(ngModel)]="newPilotData.rank" name="rankSelect">
-          <mat-option *ngFor="let rank of ranks" [value]="rank.rankName">
+        <mat-select placeholder="Choose Rank"  (selectionChange)="onRankChange($event)" [(value)]="selectedRank" name="rankSelect">
+          <mat-option *ngFor="let rank of ranks" [(value)]="rank">
             {{rank.rankName}}
           </mat-option>
         </mat-select>

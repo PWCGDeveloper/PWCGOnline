@@ -12,7 +12,7 @@ export class NewPilotService {
   constructor(private httpClient: HttpClient) { 
   }
 
-  public postNewPilotRequest(newPilotData: PilotData) {
+  public postNewPilotRequest(newPilotData: PilotData): Observable<Object> {
 
     try {
       const httpOptions = {
@@ -24,13 +24,7 @@ export class NewPilotService {
       }
 
       const url = '/pwcgServer/newPilotRequest'
-      this.httpClient.post(url, JSON.stringify(newPilotData), httpOptions).subscribe(
-        res => {
-          console.log(`Response is ${JSON.stringify(res)}`);
-        },
-        error => {
-          console.log(`Response is ${JSON.stringify(error)}`);
-        });
+      return this.httpClient.post(url, JSON.stringify(newPilotData), httpOptions);
     }
     catch (e) {
       console.log(e);

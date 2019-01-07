@@ -31,10 +31,9 @@ export class NewUserComponent implements OnInit {
     if (this.validate()) {
       console.log(`Submit new user: ` + JSON.stringify(this.newUserData));
       const obs = this.newUserService.postNewUserRequest(this.newUserData);
-      obs.subscribe( 
+      obs.subscribe(
         data => { 
           this.clickMessage = "New player request submitted for " + this.newUserData.username;
-          console.log(`onSubmitNewPlayerRequest success $(data)`)  
         },
         error => { 
           if (error.status == 409) {

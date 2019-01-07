@@ -24,9 +24,9 @@ export class NewPilotComponent implements OnInit {
   clickMessage: String;
   loading: boolean;
 
-  campaign: Campaign;
-  squadron: Squadron;
-  rank: Rank;
+  selectedCampaign: Campaign;
+  selectedSquadron: Squadron;
+  selectedRank: Rank;
 
   newPilotData: PilotData = new PilotData();
 
@@ -35,7 +35,6 @@ export class NewPilotComponent implements OnInit {
     private campaignListService: CampaignListService,
     private squadronListService: SquadronListService,
     private ranksService: RankService)  {
-    console.log(`NewPilotComponent Constructor`);
     this.campaigns = [];
     this.squadrons = [];
     this.clickMessage = `Enter user registration information and click submit`;
@@ -46,6 +45,9 @@ export class NewPilotComponent implements OnInit {
     this.loading = true;
     this.clickMessage = `Loading campaign data ...`;
     this.getCampaigns();
+    this.selectedCampaign = undefined;
+    this.selectedSquadron = undefined;
+    this.selectedRank = undefined;
   }
 
   private getCampaigns() {
@@ -74,18 +76,36 @@ export class NewPilotComponent implements OnInit {
 
     this.ranksService.getRanksForService(serviceId).then(() => {
       this.ranks = this.ranksService.ranks;
-      this.clickMessage = `Data load complete.  Proceed with selection`;
+      if (this.ranks.length > 0) {
+        this.clickMessage = `Data load complete.  Proceed with selection`;
+      }
     });
   }
 
   onSubmitNewPilotRequest() {
     try {
       if (this.validate()) {
+        console.log(`Squadron is: ` + JSON.stringify(this.selectedSquadron));
         console.log(`Submit new pilot: ` + JSON.stringify(this.newPilotData));
         this.newPilotData.username = Context.context.user;
-        this.newPilotData.squadronId = this.squadron.squadronId;
-        this.newPilotData.pilotRank = this.rank.rankName;
-        this.newPilotService.postNewPilotRequest(this.newPilotData);
+        this.newPilotData.campaignName = this.selectedCampaign.name;
+        this.newPilotData.squadronId = this.selectedSquadron.squadronId;
+        this.newPilotData.pilotRank = this.selectedRank.rankName;
+        const obs = this.newPilotService.postNewPilotRequest(this.newPilotData);
+        obs.subscribe(
+          data => { 
+            this.clickMessage = "New pilot request submitted for " + this.newPilotData.pilotName;
+          },
+          error => { 
+            if (error.status == 409) {
+              this.clickMessage = `Pilot ${this.newPilotData.pilotName} already exists.  Choose another name`;
+            }
+            else {
+              this.clickMessage = `Server error for user ${this.newPilotData.pilotName}.  Contact host`;
+            }
+          }
+       );
+
         this.clickMessage = `New player request submitted for ` + this.newPilotData.username;
       } else {
         this.clickMessage = `Pilot name, campaign, and squadron are required fields`;
@@ -97,21 +117,43 @@ export class NewPilotComponent implements OnInit {
 
   validate() {
 
+    console.log(`Validate pilot name ${this.newPilotData.pilotName}`);
+    console.log(`Validate campaign name ${this.selectedCampaign.name}`);
+    console.log(`Validate squadron is ${this.selectedSquadron.squadronId}`);
+    console.log(`Validate rank name ${this.selectedRank.rankName}`);
+
     if (this.newPilotData.pilotName === '') {
       return false;
     }
-    if (this.squadron.squadronId === 0) {
+    
+    if (this.selectedCampaign === undefined) {
       return false;
     }
-    if (this.newPilotData.campaignName === '') {
-      return false;
+    
+    if (this.selectedSquadron === undefined) {
+        return false;
     }
 
+    if (this.selectedRank === undefined) {
+      return false;
+    }
+  
     return true;
   }
 
+  onCampaignChange(event) {
+    this.selectedCampaign = event.value;
+    console.log(`Campaign selected ${this.selectedCampaign.name}`);
+  }
   onSquadronChange(event) {
-    console.log(event);
+    this.selectedSquadron = event.value;
+    console.log(`Squadron selected ${this.selectedSquadron.squadronId}`);
   }
 
+  onRankChange(event) {
+    this.selectedRank = event.value;
+    console.log(`Rank selected ${this.selectedRank.rankName}`);
+  }
+
+  
 }
