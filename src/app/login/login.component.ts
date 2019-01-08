@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginData } from '../model/logindata';
 import { LoginService } from '../login.service';
 import {ViewEncapsulation} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   clickMessage: String;
   loginData: LoginData;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private router: Router) {
     this.clickMessage = 'Enyter username and password click submit';
     this.loginData = new LoginData();
   }
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
         console.log(`Submit new user: ` + JSON.stringify(this.loginData));
         this.loginService.postLoginRequest(this.loginData);
         this.clickMessage = 'Login request submitted for ' + this.loginData.username;
+        this.router.navigate(['splashpage']);
       }
       else {
         this.clickMessage = 'Username and password are required fields';
