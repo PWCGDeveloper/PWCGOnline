@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PilotData } from '../model/pilotdata';
 import { NewPilotService } from '../newpilot.service';
 import { CampaignListService } from '../campaignList.service';
@@ -93,7 +93,7 @@ export class NewPilotComponent implements OnInit {
         this.newPilotData.pilotRank = this.selectedRank.rankName;
         const obs = this.newPilotService.postNewPilotRequest(this.newPilotData);
         obs.subscribe(
-          data => { 
+          data => {
             this.clickMessage = "New pilot request submitted for " + this.newPilotData.pilotName;
           },
           error => { 
@@ -154,6 +154,4 @@ export class NewPilotComponent implements OnInit {
     this.selectedRank = event.value;
     console.log(`Rank selected ${this.selectedRank.rankName}`);
   }
-
-  
 }

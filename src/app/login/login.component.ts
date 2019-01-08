@@ -3,6 +3,7 @@ import { LoginData } from '../model/logindata';
 import { LoginService } from '../login.service';
 import {ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
+import { Context } from '../model/context';
 
 @Component({
   selector: 'app-login',
@@ -25,12 +26,31 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitLoginRequest() {
+    Context.context.isLoggedIn = false;
+    Context.context.user = "";
+
     try {
       if (this.validate()) {
         console.log(`Submit new user: ` + JSON.stringify(this.loginData));
-        this.loginService.postLoginRequest(this.loginData);
-        this.clickMessage = 'Login request submitted for ' + this.loginData.username;
-        this.router.navigate(['splashpage']);
+        const obs = this.loginService.postLoginRequest(this.loginData);
+        obs.subscribe(
+          data => {
+            this.clickMessage = 'Login complete for ' + this.loginData.username;
+            Context.context.isLoggedIn = true;
+            Context.context.user = this.loginData.username;
+            this.router.navigate(['splashpage']);
+          },
+          error => { 
+            if (error.status == 403) {
+              this.clickMessage = `${this.loginData.username} access denied`;
+            }
+            else {
+              this.clickMessage = `${this.loginData.username} unable to log onto server`;
+            }
+          }
+       );
+
+
       }
       else {
         this.clickMessage = 'Username and password are required fields';
