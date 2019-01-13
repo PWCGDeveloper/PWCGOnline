@@ -21,7 +21,7 @@ export class NewPilotComponent implements OnInit {
   campaigns: Campaign[];
   squadrons: Squadron[];
   ranks: Rank[];
-  clickMessage: String;
+  clickMessage: string;
   loading: boolean;
 
   selectedCampaign: Campaign;

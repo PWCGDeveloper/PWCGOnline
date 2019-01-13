@@ -1,12 +1,12 @@
 export class PilotData {
-    username: String;
-    campaignName: String;
-    pilotName: String;
-    pilotRank: String;
+    username: string;
+    campaignName: string;
+    pilotName: string;
+    pilotRank: string;
     serialNumber: number;
     squadronId: number;
     approved: boolean;
-    note: String;
+    note: string;
 
     constructor() {
         this.username = '';

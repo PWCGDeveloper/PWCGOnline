@@ -13,7 +13,7 @@ import { Context } from '../model/context';
 })
 export class LoginComponent implements OnInit {
 
-  clickMessage: String;
+  clickMessage: string;
   loginData: LoginData;
 
   constructor(private loginService: LoginService, private router: Router) {

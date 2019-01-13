@@ -11,7 +11,7 @@ import { NewUserService } from '../new-user.service';
 export class NewUserComponent implements OnInit {
 
 
-  clickMessage: String = 'Enter username and password, then submit';
+  clickMessage: string = 'Enter username and password, then submit';
   newUserData: UserData =
     {
       username: '',

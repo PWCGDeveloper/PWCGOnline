@@ -9,15 +9,24 @@
 
 <mat-sidenav-container class="example-container">
   <mat-sidenav #drawer mode="side" opened role="navigation">
-    <mat-nav-list>
-      <a mat-list-item routerLink="/newpilot">New Pilot Request</a>
-    </mat-nav-list>
-    <mat-nav-list>
-      <h3>Campaigns</h3>
-      <mat-list-item *ngFor="let pilot of pilots;">
-        <a mat-list-item class="md-secondary">{{pilot.pilotName}}</a>
+
+    <mat-list>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/newpilot">New Pilot Request</a>
+      </mat-nav-list>
+
+      <mat-list-item *ngFor="let pilotElement of pilots | keyvalue;">
+        {{pilotElement.key}}
+        <br>
+        <mat-nav-list>
+          <mat-list-item *ngFor="let pilot of pilotElement.value;">
+            <a mat-list-item class="md-secondary">{{pilot.pilotName}}</a>
+          </mat-list-item>
+        </mat-nav-list>
       </mat-list-item>
-    </mat-nav-list>
+    </mat-list>
+
+
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

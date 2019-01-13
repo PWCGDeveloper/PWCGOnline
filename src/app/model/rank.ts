@@ -1,7 +1,7 @@
 export class Rank {
     rankId: number;
-    rankName: String;
-    rankAbbrev: String;
+    rankName: string;
+    rankAbbrev: string;
     rankCountry: number;
     rankService: number;
 
