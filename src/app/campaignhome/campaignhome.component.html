@@ -1,0 +1,12 @@
+<div>
+  <mat-grid-list cols="1" rowHeight="100px">
+    <mat-grid-tile *ngFor="let squadronMember of squadronMembers;">
+      <mat-form-field>
+          <a>{{squadronMember.pilotRank}} {{squadronMember.pilotName}}</a>
+      </mat-form-field>
+      <mat-form-field>
+          <a>{{squadronMember.victoryCount}}</a>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

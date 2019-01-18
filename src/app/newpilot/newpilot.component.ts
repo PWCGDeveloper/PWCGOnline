@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PilotData } from '../model/pilotdata';
+import { HumanPilot } from '../model/humanpilot';
 import { NewPilotService } from '../newpilot.service';
 import { CampaignListService } from '../campaignList.service';
 import { SquadronListService } from '../squadronList.service';
@@ -28,7 +28,7 @@ export class NewPilotComponent implements OnInit {
   selectedSquadron: Squadron;
   selectedRank: Rank;
 
-  newPilotData: PilotData = new PilotData();
+  newPilotData: HumanPilot = new HumanPilot();
 
   constructor(
     private newPilotService: NewPilotService,

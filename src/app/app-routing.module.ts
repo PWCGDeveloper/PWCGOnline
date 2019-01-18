@@ -4,6 +4,7 @@ import { NewUserComponent } from './newuser/newuser.component';
 import { NewPilotComponent } from './newpilot/newpilot.component';
 import { LoginComponent } from './login/login.component';
 import { SplashPageComponent } from './splashpage/splashpage.component';
+import { CampaignHomeComponent } from './campaignhome/campaignhome.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'newpilot', component: NewPilotComponent },
   { path: 'splashpage', component: SplashPageComponent },
+  { path: 'campaignhome', component: CampaignHomeComponent },
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PilotData } from './model/pilotdata';
+import { HumanPilot } from './model/humanpilot';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class NewPilotService {
   constructor(private httpClient: HttpClient) { 
   }
 
-  public postNewPilotRequest(newPilotData: PilotData): Observable<Object> {
+  public postNewPilotRequest(newPilotData: HumanPilot): Observable<Object> {
 
     try {
       const httpOptions = {

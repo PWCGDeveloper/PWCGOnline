@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PilotData } from '../model/pilotdata';
+import { HumanPilot } from '../model/humanpilot';
 import { PilotListService } from '../pilotlist.service';
 import { Context } from '../model/context';
 
@@ -13,7 +13,10 @@ import { Context } from '../model/context';
 
 export class NavigationComponent implements OnInit {
 
-  pilots = new Map<string, PilotData[]>();
+  selectedPilot: HumanPilot;
+  pilots = new Map<string, HumanPilot[]>();
+  pilotList: HumanPilot[];
+
   constructor(private pilotListService: PilotListService) { }
 
   ngOnInit() {
@@ -23,11 +26,12 @@ export class NavigationComponent implements OnInit {
   private getPilotsForUser() {
     this.pilotListService.getPilotsForUser(Context.context.user).then(() => {
       this.pilots = this.buildPilotByCampaignMap(this.pilotListService.pilotList);
+      this.pilotList = this.buildPilotList();
     });
   }
 
-  private buildPilotByCampaignMap(retrievedPilots: PilotData[]): Map<string, PilotData[]> {
-    let pilots = new Map<string, PilotData[]>();
+  private buildPilotByCampaignMap(retrievedPilots: HumanPilot[]): Map<string, HumanPilot[]> {
+    let pilots = new Map<string, HumanPilot[]>();
 
     for (let retrievedPilot of retrievedPilots) {
       console.log(JSON.stringify(retrievedPilot));
@@ -36,12 +40,28 @@ export class NavigationComponent implements OnInit {
         pilotsForCampaign.push(retrievedPilot);
       }
       else {
-        let pilotsForCampaign: PilotData[] = [];
+        let pilotsForCampaign: HumanPilot[] = [];
         pilotsForCampaign.push(retrievedPilot);
         pilots.set(retrievedPilot.campaignName, pilotsForCampaign);
       }
     };
 
     return pilots;
+  }
+
+  buildPilotList(): HumanPilot[] {
+    let humanPilots: HumanPilot[] = [];
+    let campaignNames = Array.from(this.pilots.keys());
+    for (let campaignName of campaignNames) {
+      for (let pilot of this.pilots.get(campaignName)) {
+        humanPilots.push(pilot);
+      }
+    }
+    return humanPilots;
+  }
+
+  onPilotChange(selectedPilot: HumanPilot) {
+    this.selectedPilot = selectedPilot;
+    console.log(`Pilot selected ${selectedPilot.pilotName}`);
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PilotData } from './model/pilotdata';
+import { HumanPilot } from './model/humanpilot';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import { PilotData } from './model/pilotdata';
 export class PilotListService {
 
 
-  pilotList: PilotData[];
+  pilotList: HumanPilot[];
 
   constructor(private httpClient: HttpClient) {
     this.pilotList = [];
@@ -25,7 +25,7 @@ export class PilotListService {
 
     const promise = new Promise((resolve, reject) => {
       const url = `/pwcgServer/pilotsForPlayer?playerHandle=${username}`;
-      this.httpClient.get<PilotData[]>(url).toPromise().then(res => {
+      this.httpClient.get<HumanPilot[]>(url).toPromise().then(res => {
         this.pilotList = res;
         console.log(JSON.stringify(res));
         resolve();

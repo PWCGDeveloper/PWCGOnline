@@ -1,4 +1,4 @@
-export class PilotData {
+export class HumanPilot {
     username: string;
     campaignName: string;
     pilotName: string;
