@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HumanPilot } from '../model/humanpilot';
 import { PilotListService } from '../pilotlist.service';
 import { Context } from '../model/context';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -13,11 +14,10 @@ import { Context } from '../model/context';
 
 export class NavigationComponent implements OnInit {
 
-  selectedPilot: HumanPilot;
-  pilots = new Map<string, HumanPilot[]>();
-  pilotList: HumanPilot[];
+  humanPilots = new Map<string, HumanPilot[]>();
+  humanPilotList: HumanPilot[];
 
-  constructor(private pilotListService: PilotListService) { }
+  constructor(private pilotListService: PilotListService, private router: Router) { }
 
   ngOnInit() {
     this.getPilotsForUser();
@@ -25,8 +25,8 @@ export class NavigationComponent implements OnInit {
 
   private getPilotsForUser() {
     this.pilotListService.getPilotsForUser(Context.context.user).then(() => {
-      this.pilots = this.buildPilotByCampaignMap(this.pilotListService.pilotList);
-      this.pilotList = this.buildPilotList();
+      this.humanPilots = this.buildPilotByCampaignMap(this.pilotListService.pilotList);
+      this.humanPilotList = this.buildPilotList();
     });
   }
 
@@ -51,9 +51,9 @@ export class NavigationComponent implements OnInit {
 
   buildPilotList(): HumanPilot[] {
     let humanPilots: HumanPilot[] = [];
-    let campaignNames = Array.from(this.pilots.keys());
+    let campaignNames = Array.from(this.humanPilots.keys());
     for (let campaignName of campaignNames) {
-      for (let pilot of this.pilots.get(campaignName)) {
+      for (let pilot of this.humanPilots.get(campaignName)) {
         humanPilots.push(pilot);
       }
     }
@@ -61,7 +61,7 @@ export class NavigationComponent implements OnInit {
   }
 
   onPilotChange(selectedPilot: HumanPilot) {
-    this.selectedPilot = selectedPilot;
-    console.log(`Pilot selected ${selectedPilot.pilotName}`);
+    Context.context.selectedHumanPilot = selectedPilot;
+    this.router.navigate(['campaignhome']);
   }
 }

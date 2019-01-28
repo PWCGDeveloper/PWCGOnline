@@ -2,15 +2,15 @@ import { Victory } from './victory';
 
 export class SquadronMember {
     serialNumber: number;
-    pilotRank: string;
-    pilotName: string;
+    rank: string;
+    name: string;
     victories: Victory[];
     victoryCount: number;
 
     constructor() {
         this.serialNumber = 0;
-        this.pilotName = '';
-        this.pilotRank = '';
+        this.rank = '';
+        this.name = '';
         this.victories = [];
         this.victoryCount = 0;
     }

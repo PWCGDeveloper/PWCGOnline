@@ -1,0 +1,24 @@
+.row {
+    display: grid;
+    grid-template-columns: 600px 30px;
+    grid-template-rows: 30px;
+    grid-gap: 1px;
+    background-color: rgba(141, 35, 35, 0.075);
+    color: rgba(0, 0, 0, 0.959); 
+}
+
+  .nameColumn {
+    width: 85.0%;
+    text-align: left;
+    grid-column-start: 1;
+    grid-column-end: 7;
+    white-space: nowrap;
+}
+
+.airVictoryColumn {
+    width: 55.0%;
+    text-align: right;
+    grid-column-start: 8; 
+    grid-column-end: 8;
+    white-space: nowrap;
+}

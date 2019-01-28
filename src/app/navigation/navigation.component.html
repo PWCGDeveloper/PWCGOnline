@@ -14,8 +14,8 @@
       <mat-nav-list>
         <a mat-list-item routerLink="/newpilot">New Pilot Request</a>
 
-        <mat-list-item *ngFor="let pilot of pilotList" (click)="onPilotChange(pilot)">
-          <a mat-list-item routerLink='/campaignhome'>{{pilot.campaignName}}: {{pilot.pilotName}}</a>
+        <mat-list-item *ngFor="let pilot of humanPilotList" (click)="onPilotChange(pilot)">
+          <a mat-list-item >{{pilot.campaignName}}: {{pilot.pilotName}}</a>
         </mat-list-item>
     </mat-nav-list>
   </mat-list>
