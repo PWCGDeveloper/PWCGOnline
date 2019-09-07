@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "package": "cd dist/pwcgOnline && npm pack",
-    "preinstall": "npm install -g angular-cli"
+    "preinstall": "npm install -g angular-cli",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
