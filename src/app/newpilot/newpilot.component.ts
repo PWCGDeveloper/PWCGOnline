@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HumanPilot } from '../model/humanpilot';
 import { NewPilotService } from '../newpilot.service';
 import { CampaignListService } from '../campaignList.service';
-import { SquadronListService } from '../squadronList.service';
+import { SquadronListService } from '../squadronlist.service';
 import { RankService } from '../rank.service';
 import { Campaign } from '../model/campaign';
 import { Squadron } from '../model/squadron';
