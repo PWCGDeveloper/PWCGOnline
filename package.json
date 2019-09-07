@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "package": "cd dist/pwcgOnline && npm pack"
+    "package": "cd dist/pwcgOnline && npm pack",
+    "preinstall": "npm install -g angular-cli"
   },
   "private": true,
   "dependencies": {
